@@ -1,3 +1,4 @@
+
 <section class="flex-1 p-4 overflow-y-auto">
     <h2 class="text-lg font-semibold border-b-1 border-gray-300 pb-3 mb-8 w-full">Selamat Datang, <?= $data['user']['username'] ?> di Aplikasi Manajemen Pegawai</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">

@@ -29,8 +29,8 @@
             <td class="border border-gray-300 px-3 py-2"><?= $pegawai["jabatan"] ?></td>
             <td class="border border-gray-300 px-3 py-2"><?= $pegawai["no_hp"] ?></td>
             <td class="border border-gray-300 px-3 py-2">
-                <a href="<?= BASEURL; ?>/pegawai/ubah/<?= $pegawai['id']; ?>" class="text-white bg-green-500 px-2 py-1 rounded text-xs hover:bg-green-600">Edit</a>
-                <a href="<?= BASEURL; ?>/pegawai/hapus/<?= $pegawai['id']; ?>" class="btn-hapus text-white bg-red-500 px-2 py-1 rounded text-xs hover:bg-red-600">Hapus</a>
+                <a href="<?= BASEURL; ?>?c=pegawai&m=ubah&id=<?= $pegawai['id']; ?>" class="text-white bg-green-500 px-2 py-1 rounded text-xs hover:bg-green-600">Edit</a>
+                <a href="<?= BASEURL; ?>?c=pegawai&m=hapus&id=<?= $pegawai['id']; ?>" class="btn-hapus text-white bg-red-500 px-2 py-1 rounded text-xs hover:bg-red-600">Hapus</a>
             </td>
         </tr>
         <?php $i++ ?>
@@ -49,7 +49,7 @@
     <nav aria-label="Pagination" class="isolate inline-flex -space-x-px rounded-md shadow-sm">
         <!-- Tombol Previous -->
         <?php if ($data['halSkrg'] > 1): ?>
-            <a href="<?= BASEURL; ?>/pegawai/<?= $data['halSkrg'] - 1; ?>" data-page="<?= $data['halSkrg'] - 1; ?>"
+            <a href="<?= BASEURL ?>?c=pegawai&m=index&page=<?= $data['halSkrg'] - 1; ?>" data-page="<?= $data['halSkrg'] - 1; ?>"
                 class="page-link relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                 <span class="sr-only">Previous</span>
                 <svg viewBox="0 0 20 20" fill="currentColor" class="size-5">
@@ -68,7 +68,7 @@
 
         <!-- Nomor Halaman -->
         <?php for ($i = 1; $i <= $data['jmlHalaman']; $i++): ?>
-            <a href="<?= BASEURL; ?>/pegawai/<?= $i; ?>" data-page="<?= $i; ?>"
+            <a href="<?= BASEURL ?>?c=pegawai&m=index&page=<?= $i; ?>" data-page="<?= $i; ?>"
                 class="page-link relative inline-flex items-center px-4 py-2 text-sm font-semibold <?= $i == $data['halSkrg'] ? 'bg-blue-500 text-white' : 'text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50' ?>">
                 <?= $i; ?>
             </a>
@@ -76,7 +76,7 @@
 
         <!-- Tombol Next -->
         <?php if ($data['halSkrg'] < $data['jmlHalaman']): ?>
-            <a href="<?= BASEURL; ?>/pegawai/<?= $data['halSkrg'] + 1; ?>" data-page="<?= $data['halSkrg'] + 1; ?>"
+            <a href="<?= BASEURL ?>?c=pegawai&m=index&page=<?= $data['halSkrg'] + 1; ?>" data-page="<?= $data['halSkrg'] + 1; ?>"
                 class="page-link relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                 <span class="sr-only">Next</span>
                 <svg viewBox="0 0 20 20" fill="currentColor" class="size-5">

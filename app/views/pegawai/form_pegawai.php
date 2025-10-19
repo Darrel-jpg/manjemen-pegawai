@@ -1,6 +1,6 @@
 <section class="flex-1 p-4 overflow-y-auto">
     <h2 class="text-lg font-semibold border-b border-gray-300 pb-3 mb-8 w-full"><?= $data['judul'] ?></h2>
-    <form action="<?= BASEURL; ?>/pegawai/<?= $data['fungsi'] ?>/<?= isset($data['data_pegawai']['id']) ? $data['data_pegawai']['id'] : ''; ?>" method="post" enctype="multipart/form-data">
+    <form action="<?= BASEURL; ?>?c=pegawai&m=<?= $data['fungsi']; ?><?= isset($data['data_pegawai']['id']) ? '&id=' . $data['data_pegawai']['id'] : ''; ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= isset($data['data_pegawai']['id']) ? $data['data_pegawai']['id'] : ''; ?>">
         <input type="hidden" name="fotoLama" value="<?= isset($data['data_pegawai']['foto']) ? $data['data_pegawai']['foto'] : ''; ?>">
 

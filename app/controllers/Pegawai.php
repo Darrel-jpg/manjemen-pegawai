@@ -3,21 +3,21 @@
 class Pegawai extends Controller {
     public function __construct()
     {
-        // session_start();
-        if (!isset($_SESSION['login'])) {
-            header('Location: ' . BASEURL . '/auth');
+        if (!isset($_SESSION['user'])) {
+            header('Location: ' . BASEURL . '?c=auth');
             exit;
         }
     }
 
-    public function index($page = 1) {
+    public function index() {
         $pegawaiModel = $this->model('Pegawai_model');
 
         $jmlDataHalaman = 4;
         $jmlData = $pegawaiModel->getJumlahPegawai();
         $jmlHalaman = ceil($jmlData / $jmlDataHalaman);
 
-        $halSkrg = (int)$page;
+        $halSkrg = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
         if ($halSkrg < 1) $halSkrg = 1;
         if ($halSkrg > $jmlHalaman) $halSkrg = $jmlHalaman;
 
@@ -31,13 +31,14 @@ class Pegawai extends Controller {
         $data['jmlDataHalaman'] = $jmlDataHalaman;
 
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $this->view('pegawai/tabel', $data); // tampilkan tabel
-        } else {
-            $this->view('templates/header', ['judul' => 'Data Pegawai']);
-            $this->view('templates/sidebar');
-            $this->view('pegawai/index', $data);
-            $this->view('templates/footer');
+            $this->view('pegawai/tabel', $data);
+            return;
         }
+
+        $this->view('templates/header', ['judul' => 'Data Pegawai']);
+        $this->view('templates/sidebar');
+        $this->view('pegawai/index', $data);
+        $this->view('templates/footer');
     }
 
     public function uploadFoto() {
@@ -47,7 +48,7 @@ class Pegawai extends Controller {
 
         if ($error === 4) {
             Alert::setAlert('Gagal', 'Pilih foto terlebih dahulu', 'error');
-            header('Location: ' . BASEURL . '/pegawai');
+            header('Location: ' . BASEURL . '?c=pegawai');
             exit;
         }
 
@@ -56,7 +57,7 @@ class Pegawai extends Controller {
         $ekstensiFoto = strtolower(end($ekstensiFoto));
         if (!in_array($ekstensiFoto, $ekstensiFotoValid)) {
             Alert::setAlert('Gagal', 'Yang anda upload bukan foto', 'error');
-            header('Location: ' . BASEURL . '/pegawai');
+            header('Location: ' . BASEURL . '?c=pegawai');
             exit;
         }
 
@@ -86,11 +87,11 @@ class Pegawai extends Controller {
 
             if ($this->model('Pegawai_model')->tambahDataPegawai($dataPegawai) > 0) {
                 Alert::setAlert('Berhasil', 'Data Pegawai berhasil ditambahkan', 'success');
-                header('Location: ' . BASEURL . '/pegawai');
+                header('Location: ' . BASEURL . '?c=pegawai');
                 exit;
             } else {
                 Alert::setAlert('Gagal', 'Data Pegawai gagal ditambahkan', 'error');
-                header('Location: ' . BASEURL . '/pegawai/tambah');
+                header('Location: ' . BASEURL . '?c=pegawai&m=tambah');
                 exit;
             }
         }
@@ -107,11 +108,11 @@ class Pegawai extends Controller {
     public function hapus($id) {
         if ($this->model('Pegawai_model')->hapusDataPegawai($id) > 0) {
             Alert::setAlert('Berhasil', 'Data Pegawai berhasil dihapus', 'success');
-            header('Location: ' . BASEURL . '/pegawai');
+            header('Location: ' . BASEURL . '?c=pegawai');
             exit;
         } else {
             Alert::setAlert('Gagal', 'Data Pegawai gagal dihapus', 'error');
-            header('Location: ' . BASEURL . '/pegawai');
+            header('Location: ' . BASEURL . '?c=pegawai');
             exit;
         }
     }
@@ -142,11 +143,11 @@ class Pegawai extends Controller {
 
             if ($this->model('Pegawai_model')->ubahDataPegawai($dataPegawai) > 0) {
                 Alert::setAlert('Berhasil', 'Data Pegawai berhasil diubah', 'success');
-                header('Location: ' . BASEURL . '/pegawai');
+                header('Location: ' . BASEURL . '?c=pegawai');
                 exit;
             } else {
                 Alert::setAlert('Gagal', 'Data Pegawai gagal diubah', 'error');
-                header('Location: ' . BASEURL . '/pegawai/ubah/' . $id);
+                header('Location: ' . BASEURL . '?c=pegawai&m=ubah');
                 exit;
             }
         }

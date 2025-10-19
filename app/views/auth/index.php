@@ -11,7 +11,7 @@
     <div class="container" id="container">
         <!-- Form Login -->
         <div class="form-box login">
-            <form method="POST" action="<?= BASEURL; ?>/auth/login">
+            <form method="POST" action="<?= BASEURL ?>?c=auth&m=login">
                 <h1>Login</h1>
                 <div class="input-box">
                     <input type="text" name="username" placeholder="Username" autocomplete="off" required>
@@ -33,7 +33,7 @@
 
         <!-- Form Register -->
         <div class="form-box register">
-            <form method="POST" action="<?= BASEURL; ?>/auth/register">
+            <form method="POST" action="<?= BASEURL ?>?c=auth&m=register">
                 <h1>Registration</h1>
                 <div class="input-box">
                     <input type="text" name="username" placeholder="Username" autocomplete="off" required>
