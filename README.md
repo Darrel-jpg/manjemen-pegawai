@@ -1,4 +1,4 @@
-<h1>📘 UTS Pemrograman Web</h1>
+<h1>UTS Pemrograman Web</h1>
 
 <div>
 
