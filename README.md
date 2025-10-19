@@ -29,15 +29,6 @@ Aplikasi ini memiliki fitur seperti login, manajemen data pegawai, dan navigasi 
   <li>AJAX untuk pagination tabel tanpa reload</li>
   <li>Hosting menggunakan <b>InfinityFree</b></li>
 </ul>
-
-
-<h2>📄 Informasi Tambahan</h2>
-
-<p>
-Aplikasi ini dikembangkan untuk tujuan akademik dalam rangka <b>UTS Pemrograman Web</b>.  
-Tidak disarankan menggunakan kredensial asli karena sistem keamanan belum diimplementasikan secara penuh.
-</p>
-
 ---
 
 <h4 align="center">© 2025 Darrel F. A — Universitas Jember</h4>
