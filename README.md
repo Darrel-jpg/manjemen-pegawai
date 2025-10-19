@@ -29,6 +29,7 @@ Aplikasi ini memiliki fitur seperti login, manajemen data pegawai, dan navigasi 
   <li>AJAX untuk pagination tabel tanpa reload</li>
   <li>Hosting menggunakan <b>InfinityFree</b></li>
 </ul>
+
 ---
 
 <h4 align="center">© 2025 Darrel F. A — Universitas Jember</h4>
