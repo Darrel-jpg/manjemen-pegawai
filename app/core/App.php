@@ -52,7 +52,7 @@ class App{
         return $url;
     } else {
         // ambil path dari REQUEST_URI (karena tidak lewat ?url=...)
-        $request = str_replace('/public/index.php', '', $_SERVER['REQUEST_URI']);
+        $request = str_replace('/index.php', '', $_SERVER['REQUEST_URI']);
         $request = trim($request, '/');
         if ($request == '') return [];
         return explode('/', $request);
